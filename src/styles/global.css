@@ -198,7 +198,7 @@ main .katex-display {
     inset: -12vmax;
     z-index: -1;
     pointer-events: none;
-    background-image: url("../assets/images/histology-background.jpeg");
+    background-image: var(--histology-background-image);
     background-position: center;
     background-size: cover;
     filter: blur(18px) saturate(1.08);

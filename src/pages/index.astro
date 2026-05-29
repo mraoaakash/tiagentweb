@@ -1,0 +1,90 @@
+---
+import Links from "../components/Links.astro";
+import Authors from "../components/Authors.astro";
+import Notes from "../components/Notes.astro";
+import type { Author, Note, Link } from "../types/types";
+
+import Table from "../components/Table.astro";
+
+import "../styles/global.css";
+import "katex/dist/katex-swap.css";
+
+import { Content, frontmatter } from "../paper.mdx";
+
+interface Frontmatter {
+  title: string;
+  authors: Author[];
+  conference?: string;
+  conferenceUrl?: string;
+  notes?: Note[];
+  links?: Link[];
+  description?: string;
+  favicon: string;
+  thumbnail?: string;
+  theme?: "device" | "light" | "dark";
+}
+
+const {
+  title,
+  authors,
+  conference,
+  conferenceUrl,
+  notes,
+  links,
+  description,
+  favicon,
+  thumbnail,
+  theme = "device",
+} = frontmatter as Frontmatter;
+
+const baseUrl = import.meta.env.BASE_URL;
+const prefix = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+const faviconType = favicon.endsWith(".svg") ? "image/svg+xml" : "image/png";
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    {description && <meta name="description" content={description} />}
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="icon" type={faviconType} href={prefix + favicon} />
+
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    {thumbnail && <meta property="og:image" content={prefix + thumbnail} />}
+
+    <title>{title}</title>
+  </head>
+  <body
+    class="prose prose-lg max-w-none pt-16 pb-6"
+  >
+    <header class="mx-auto mb-12 max-w-[65rem] px-6 text-center">
+      <h1>{title}</h1>
+      <div class="flex flex-col items-center gap-6">
+        <Authors authors={authors} />
+        {conference && (
+          <div>
+            {conferenceUrl ? <a href={conferenceUrl}>{conference}</a> : conference}
+          </div>
+        )}
+        {notes && <Notes notes={notes} />}
+        {links && <Links links={links} />}
+      </div>
+    </header>
+    <main>
+      <Content components={{ table: Table }} />
+    </main>
+    <footer class="mx-auto max-w-[65rem] px-6 text-center">
+      <p class="prose-sm text-center">
+        Built with <a
+          href="https://research-template.roman.technology"
+          rel="nofollow">Roman Hauksson-Neill's project page template</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

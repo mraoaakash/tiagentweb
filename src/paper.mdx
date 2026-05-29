@@ -1,0 +1,159 @@
+---
+title: "TIAgent: Enabling Code-Free Computational Pathology Workflows in Natural Language"
+authors:
+  - name: Aakash Madhav Rao
+    url: https://mraoaakash.github.io/
+    notes: ["1", "2"]
+  - name: Mark Eastwood
+    url: https://warwick.ac.uk/fac/cross_fac/tia/people/eastwood/
+    notes: ["1", "2"]
+  - name: Danielle Belgrave
+    url: https://www.daniellebelgrave.com/
+    notes: ["3"]
+  - name: Fayyaz Minhas
+    url: https://warwick.ac.uk/fac/sci/dcs/people/fayyaz_minhas/
+    notes: ["1", "2"]
+conference: ECDP 2026
+conferenceUrl: https://www.ecdp2026.org/
+notes:
+  - symbol: "1"
+    text: Tissue Image Analytics (TIA) Centre, Dept. Computer Science, University of Warwick
+  - symbol: "2"
+    text: PRISM Lab, TIA Centre, Dept. Computer Science, University of Warwick
+  - symbol: "3"
+    text: GSK, Greater London, England, United Kingdom
+links:
+  - name: Poster
+    url: /assets/docs/ECDP_2026_Poster_final.pdf
+    icon: ri:image-line
+
+# The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
+theme: light
+
+# This is the icon that appears in the user's browser tab. To customize, change the favicon file in /public/, or add your own file to /public/ and change the filename here.
+favicon: tiagent_web_logo.png
+
+# These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail. After you publish your page, you can double check that these previews look right using [this tool](https://linkpreview.xyz/)
+description: Simple project page template for your research paper, built with Astro and Tailwind
+thumbnail: tiagent_web_logo.png
+---
+
+import HighlightedSection from "./components/HighlightedSection.astro";
+import Carousel from "./components/Carousel.astro";
+import CarouselSlide from "./components/CarouselSlide.astro";
+
+<img
+  className="top-figure"
+  src="/assets/images/concept_figure.png"
+  alt="Concept figure showing TIAgent inputs, workflow generation, visual outputs, and downstream computational pathology analysis tasks."
+/>
+
+<HighlightedSection>
+
+## Abstract
+
+### Introduction
+
+Computational pathology workflows span slide ingestion, pre-processing, quality control, model training/inference, post-processing, and reporting. However, constructing such pipelines demands programming expertise and is prone to configuration errors. We present Tissue Image Analytics (TIA) Agent (TIAgent), a framework that translates natural-language instructions into structured, executable, and shareable computational pathology workflows, enabling complex analysis tasks without code.
+
+### Materials and Methods
+
+TIAgent connects a large language model (LLM) to TIAToolbox through a LangGraph-based orchestrator, enabling conversational pipeline building within the TIA-Visualizer. User instructions are converted into a constrained, machine-checkable plan with an intermediate representation restricted to validated TIAToolbox components. After user review, the plan is deterministically compiled into a typed directed acyclic graph (DAG) and exported as a ComfyUI workflow for execution. Nodes represent modular operations (ingestion, tiling, embedding extraction, model inference, aggregation, reporting) with typed interfaces enforcing compatibility and resolution consistency.
+
+### Results
+
+We evaluated TIAgent on whole-slide loading/tiling, dataset ingestion, and pre-trained model execution within TIA-Visualizer. Workflow quality was assessed using Success Rate, Instruction Alignment, and Format Validation (FV). Larger LLMs achieved higher structural validity and lower repair rates than smaller models (FV: Qwen2.5:7b-instruct 12.25% vs GPT-OSS:20b 94.23%).
+
+### Conclusion
+
+TIAgent is the first framework providing a natural-language interface for constructing validated computational pathology pipelines. Conversational specification with constrained intermediate representation, deterministic graph compilation, and type-safe validation prevents free-form code hallucination while preserving transparency and auditability. Integration with TIAToolbox and ComfyUI enables reproducible, shareable, human-validated workflows for whole-slide image and machine learning tasks.
+
+</HighlightedSection>
+
+## Demonstrations
+
+### Stromal TIL density computation in a breast cancer WSI
+
+<video
+  className="demo-video"
+  src="/assets/videos/sTIL-Quantification.mov"
+  controls
+  playsInline
+/>
+
+<Carousel>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/original_wsi.png"
+        alt="Original whole-slide image from TCGA-HN-A2NL-01Z"
+      />
+      <figcaption>Original WSI from TCGA-HN-A2NL-01Z</figcaption>
+    </figure>
+  </CarouselSlide>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/segmentation_overlay.png"
+        alt="Segmentation overlay generated using fcn_resnet50_unet-bcss"
+      />
+      <figcaption>
+        Segmentation using <a href="https://tia-toolbox.readthedocs.io/en/latest/pretrained.html#:~:text=fcn%2Dtissue_mask-,Breast%20Cancer,-%C2%B6">fcn_resnet50_unet-bcss</a>
+      </figcaption>
+    </figure>
+  </CarouselSlide>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/nuclei_detection_overlay.png"
+        alt="Nuclei instance segmentation overlay generated using KongNet PUMA T2 3"
+      />
+      <figcaption>
+        Nuclei Instance Segmentation using <a href="https://tia-toolbox.readthedocs.io/en/latest/pretrained.html#:~:text=PUMA%20Dataset%C2%B6,-We%20provide%20the">KongNet PUMA T2 3</a>
+      </figcaption>
+    </figure>
+  </CarouselSlide>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/tumor_associated_stroma_overlay.png"
+        alt="Tumor associated stroma overlay"
+      />
+      <figcaption>Computing the Tumor Associated Stroma (TAC)</figcaption>
+    </figure>
+  </CarouselSlide>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/lymphocytes_in_tac.png"
+        alt="Lymphocytes filtered within the tumor associated stroma"
+      />
+      <figcaption>Filtering the Lymphocytes in the TAC</figcaption>
+    </figure>
+  </CarouselSlide>
+  <CarouselSlide>
+    <figure className="output-sample">
+      <img
+        src="/assets/images/stil_density_map.png"
+        alt="sTIL density map"
+      />
+      <figcaption>Computing the density of sTILs</figcaption>
+    </figure>
+  </CarouselSlide>
+</Carousel>
+
+## Method
+
+<img
+  className="method-figure"
+  src="/assets/images/methods_figure.png"
+  alt="Method diagram showing TIAgent request planning, human review, graph drafting, validation, compilation, execution, and verification agents."
+/>
+
+## Evaluation
+
+<img
+  className="evaluation-figure"
+  src="/assets/images/evaluation_figure.png"
+  alt="Evaluation chart comparing model performance across response categories for multiple language models."
+/>

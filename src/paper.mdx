@@ -24,7 +24,7 @@ notes:
     text: GSK, Greater London, England, United Kingdom
 links:
   - name: Poster
-    url: /assets/docs/ECDP_2026_Poster_final.pdf
+    url: assets/docs/ECDP_2026_Poster_final.pdf
     icon: ri:image-line
 
 # The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
@@ -44,7 +44,7 @@ import CarouselSlide from "./components/CarouselSlide.astro";
 
 <img
   className="top-figure"
-  src="/assets/images/concept_figure.png"
+  src="assets/images/concept_figure.png"
   alt="Concept figure showing TIAgent inputs, workflow generation, visual outputs, and downstream computational pathology analysis tasks."
 />
 
@@ -76,7 +76,7 @@ TIAgent is the first framework providing a natural-language interface for constr
 
 <video
   className="demo-video"
-  src="/assets/videos/sTIL-Quantification.mov"
+  src="assets/videos/sTIL-Quantification.mov"
   controls
   playsInline
 />
@@ -85,7 +85,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/original_wsi.png"
+        src="assets/images/original_wsi.png"
         alt="Original whole-slide image from TCGA-HN-A2NL-01Z"
       />
       <figcaption>Original WSI from TCGA-HN-A2NL-01Z</figcaption>
@@ -94,7 +94,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/segmentation_overlay.png"
+        src="assets/images/segmentation_overlay.png"
         alt="Segmentation overlay generated using fcn_resnet50_unet-bcss"
       />
       <figcaption>
@@ -105,7 +105,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/nuclei_detection_overlay.png"
+        src="assets/images/nuclei_detection_overlay.png"
         alt="Nuclei instance segmentation overlay generated using KongNet PUMA T2 3"
       />
       <figcaption>
@@ -116,7 +116,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/tumor_associated_stroma_overlay.png"
+        src="assets/images/tumor_associated_stroma_overlay.png"
         alt="Tumor associated stroma overlay"
       />
       <figcaption>Computing the Tumor Associated Stroma (TAC)</figcaption>
@@ -125,7 +125,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/lymphocytes_in_tac.png"
+        src="assets/images/lymphocytes_in_tac.png"
         alt="Lymphocytes filtered within the tumor associated stroma"
       />
       <figcaption>Filtering the Lymphocytes in the TAC</figcaption>
@@ -134,7 +134,7 @@ TIAgent is the first framework providing a natural-language interface for constr
   <CarouselSlide>
     <figure className="output-sample">
       <img
-        src="/assets/images/stil_density_map.png"
+        src="assets/images/stil_density_map.png"
         alt="sTIL density map"
       />
       <figcaption>Computing the density of sTILs</figcaption>
@@ -146,7 +146,7 @@ TIAgent is the first framework providing a natural-language interface for constr
 
 <img
   className="method-figure"
-  src="/assets/images/methods_figure.png"
+  src="assets/images/methods_figure.png"
   alt="Method diagram showing TIAgent request planning, human review, graph drafting, validation, compilation, execution, and verification agents."
 />
 
@@ -154,6 +154,6 @@ TIAgent is the first framework providing a natural-language interface for constr
 
 <img
   className="evaluation-figure"
-  src="/assets/images/evaluation_figure.png"
+  src="assets/images/evaluation_figure.png"
   alt="Evaluation chart comparing model performance across response categories for multiple language models."
 />

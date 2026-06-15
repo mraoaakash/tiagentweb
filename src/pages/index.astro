@@ -2,6 +2,7 @@
 import Links from "../components/Links.astro";
 import Authors from "../components/Authors.astro";
 import Notes from "../components/Notes.astro";
+import SurveyPopup from "../components/SurveyPopup.astro";
 import type { Author, Note, Link } from "../types/types";
 
 import Table from "../components/Table.astro";
@@ -87,5 +88,6 @@ const faviconType = favicon.endsWith(".svg") ? "image/svg+xml" : "image/png";
         >
       </p>
     </footer>
+    <SurveyPopup />
   </body>
 </html>

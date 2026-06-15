@@ -1,0 +1,49 @@
+---
+const formUrl =
+  "https://forms.office.com/Pages/ResponsePage.aspx?id=vc-6Ce9HZUSSZTVG8ur2vBfwQRfBDZBNsufjDmQyJuhURTdERlAxMDQxVEFJNkRYUEpJNDNPVzRSSC4u&embed=true";
+---
+
+<aside class="survey-popup" data-survey-popup data-survey-url={formUrl}>
+  <div class="survey-popup__header">
+    <div>
+      <strong>TIAgent survey</strong>
+      <p>Share quick feedback about TIAgent.</p>
+    </div>
+    <div class="survey-popup__actions">
+      <a href={formUrl} target="_blank" rel="noopener noreferrer">Open survey</a>
+      <button type="button" aria-label="Collapse survey form" data-survey-close>
+        &times;
+      </button>
+    </div>
+  </div>
+  <iframe
+    title="TIAgent survey form"
+    width="640"
+    height="480"
+    src={formUrl}
+    allowfullscreen></iframe>
+</aside>
+
+<script>
+  const surveyPopup = document.querySelector("[data-survey-popup]");
+  const surveyClose = document.querySelector("[data-survey-close]");
+  const surveyCollapsedKey = "tiagent-survey-popup-collapsed";
+
+  if (localStorage.getItem(surveyCollapsedKey) === "true") {
+    surveyPopup?.classList.add("survey-popup--collapsed");
+  }
+
+  surveyPopup?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (target.closest("a") || target.closest("button") || target.closest("iframe")) return;
+
+    const url = surveyPopup.getAttribute("data-survey-url");
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  });
+
+  surveyClose?.addEventListener("click", () => {
+    localStorage.setItem(surveyCollapsedKey, "true");
+    surveyPopup?.classList.add("survey-popup--collapsed");
+  });
+</script>

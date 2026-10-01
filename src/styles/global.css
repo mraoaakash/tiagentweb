@@ -318,9 +318,16 @@ main .katex-display {
   margin: 0 auto 3rem;
 }
 
-.prose .method-figure,
 .prose .evaluation-figure {
   width: min(100%, 45rem);
+}
+
+.prose .method-figure {
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  border: 1px solid var(--site-border);
+  border-radius: 0.85rem;
+  background: #ffffff;
+  box-shadow: 0 8px 24px var(--site-menu-shadow);
 }
 
 .prose .demo-video {
@@ -371,6 +378,69 @@ main .katex-display {
   background: var(--site-accent-2);
   color: #fff7fc;
   box-shadow: 0 0 0 3px var(--site-focus-ring);
+}
+
+.presentation-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.prose .presentation-button {
+  display: grid;
+  grid-template-rows: 1.2rem 1.1rem 1.1rem;
+  flex: 0 1 11.5rem;
+  justify-items: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.55rem 0.75rem;
+  text-align: center;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 0 18px rgba(139, 30, 120, 0.3);
+}
+
+.prose .presentation-button:hover {
+  box-shadow: 0 0 24px rgba(139, 30, 120, 0.45);
+}
+
+.presentation-venue {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.presentation-venue > span {
+  position: absolute;
+  left: calc(100% + 0.3rem);
+  top: 0;
+  font-size: 0.75rem;
+}
+
+.presentation-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.presentation-status {
+  align-self: center;
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  background: #fff7fc;
+  color: var(--site-accent);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.presentation-label:empty + .presentation-status {
+  grid-row: 2;
+}
+
+.prose .presentation-button:focus-visible {
+  outline: 3px solid var(--site-accent-2);
+  outline-offset: 4px;
 }
 
 .survey-popup {

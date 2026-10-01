@@ -1,5 +1,5 @@
 ---
-title: "TIAgent: Enabling Code-Free Computational Pathology Workflows in Natural Language"
+title: "TIAgent: From Natural Language to Grounded Agentic Workflows for Computational Pathology"
 authors:
   - name: Aakash Madhav Rao
     url: https://mraoaakash.github.io/
@@ -13,8 +13,19 @@ authors:
   - name: Fayyaz Minhas
     url: https://warwick.ac.uk/fac/sci/dcs/people/fayyaz_minhas/
     notes: ["1", "2"]
-conference: ECDP 2026
-conferenceUrl: https://www.ecdp2026.org/
+presentations:
+  - venue: ECDP 2026
+    label: Poster presentation
+    url: assets/docs/ECDP_2026_Poster_final.pdf
+  - venue: NeurIPS 2026
+    label: AgenticLS Workshop
+    status: Coming soon
+    url: https://agenticls.github.io/
+  - venue: Preprint
+    label: ""
+    status: Coming soon
+    # Add the DOI URL here when available, e.g. https://doi.org/...
+    url: ""
 notes:
   - symbol: "1"
     text: Tissue Image Analytics (TIA) Centre, Dept. Computer Science, University of Warwick
@@ -22,10 +33,6 @@ notes:
     text: PRISM Lab, TIA Centre, Dept. Computer Science, University of Warwick
   - symbol: "3"
     text: GSK, Greater London, England, United Kingdom
-links:
-  - name: Poster
-    url: assets/docs/ECDP_2026_Poster_final.pdf
-    icon: ri:image-line
 
 # The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
 theme: light
@@ -162,8 +169,8 @@ TIAgent is the first framework providing a natural-language interface for constr
 
 <img
   className="method-figure"
-  src="assets/images/methods_figure.png"
-  alt="Method diagram showing TIAgent request planning, human review, graph drafting, validation, compilation, execution, and verification agents."
+  src="assets/images/methods_workflow.png"
+  alt="TIAgent architecture from natural-language requests through planning, human review, grounded workflow generation, validation, and execution, alongside an example computing stromal lymphocyte density in a breast cancer whole-slide image."
 />
 
 ## Evaluation

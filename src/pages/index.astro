@@ -15,8 +15,12 @@ import { Content, frontmatter } from "../paper.mdx";
 interface Frontmatter {
   title: string;
   authors: Author[];
-  conference?: string;
-  conferenceUrl?: string;
+  presentations?: {
+    venue: string;
+    label: string;
+    url: string;
+    status?: string;
+  }[];
   notes?: Note[];
   links?: Link[];
   description?: string;
@@ -28,8 +32,7 @@ interface Frontmatter {
 const {
   title,
   authors,
-  conference,
-  conferenceUrl,
+  presentations,
   notes,
   links,
   description,
@@ -68,12 +71,35 @@ const faviconType = favicon.endsWith(".svg") ? "image/svg+xml" : "image/png";
       <h1>{title}</h1>
       <div class="flex flex-col items-center gap-6">
         <Authors authors={authors} />
-        {conference && (
-          <div>
-            {conferenceUrl ? <a href={conferenceUrl}>{conference}</a> : conference}
-          </div>
-        )}
         {notes && <Notes notes={notes} />}
+        {
+          presentations && (
+            <nav
+              aria-label="Presentations and preprint"
+              class="presentation-links not-prose"
+            >
+              {presentations.map((presentation) => (
+                <a
+                  class="project-link-button presentation-button"
+                  href={presentation.url || undefined}
+                  role={!presentation.url ? "link" : undefined}
+                  aria-disabled={!presentation.url ? "true" : undefined}
+                >
+                  <span class="presentation-venue">
+                    {presentation.venue}{" "}
+                    {presentation.url && <span aria-hidden="true">↗</span>}
+                  </span>
+                  <span class="presentation-label">{presentation.label}</span>
+                  {presentation.status && (
+                    <span class="presentation-status">
+                      {presentation.status}
+                    </span>
+                  )}
+                </a>
+              ))}
+            </nav>
+          )
+        }
         {links && <Links links={links} />}
       </div>
     </header>
